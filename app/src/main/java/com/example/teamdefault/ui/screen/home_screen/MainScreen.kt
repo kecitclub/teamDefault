@@ -18,7 +18,7 @@ fun MainScreen() {
         bottomBar = { BottomBar()},
         containerColor = colorResource(id = R.color.primary_purple)
     ) {
-        it
+        HomeScreen(innerPadding = it)
     }
 }
 @Preview
