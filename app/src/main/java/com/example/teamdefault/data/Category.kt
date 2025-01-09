@@ -10,10 +10,8 @@ data class Category(
 
 
 val itemCategory = listOf(
-    Category(title = "Language", noOfQuestions = "6/130 questions", painterId = R.drawable.boy),
-    Category(title = "Culture", noOfQuestions = "5/90 questions", painterId = R.drawable.boy),
-    Category(title = "Story", noOfQuestions = "3/80 questions", painterId = R.drawable.boy),
-    Category(title = "Festival", noOfQuestions = "2/30 questions", painterId = R.drawable.boy),
-    Category(title = "Language", noOfQuestions = "3/60 questions", painterId = R.drawable.boy),
-    Category(title = "Culture", noOfQuestions = "6/110 questions", painterId = R.drawable.boy)
+    Category(title = "Language", noOfQuestions = "", painterId = R.drawable.language),
+    Category(title = "Culture", noOfQuestions = "", painterId = R.drawable.culture),
+    Category(title = "Folk Tales", noOfQuestions = "", painterId = R.drawable.folk_tales),
+    Category(title = "Festival", noOfQuestions = "", painterId = R.drawable.festive),
 )
