@@ -1,6 +1,3 @@
-Here’s a combined and organized task list for your project based on the notes and the image:
-
----
 
 ### **Naani: Learning Platform for Children and NRN – "From Nepal, For Nepal, With Nepal"**
 
