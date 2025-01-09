@@ -1,0 +1,12 @@
+llama-index
+llama-index-embeddings-huggingface
+peft
+auto-gptq
+bitsandbytes
+python-docx
+docx2txt
+mistralai
+transformers
+googletrans
+flask
+asyncio

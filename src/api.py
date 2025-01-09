@@ -1,0 +1,57 @@
+from flask import Flask, request, jsonify
+from context_retrieve import get_context_from_query
+from question_asnwer import generate_fun_qa_from_context
+from translator import translate_to_nepali
+import asyncio
+
+app = Flask(__name__)
+
+# Route for retrieving context based on a question
+@app.route('/retrieve', methods=['POST'])
+def retrieve_context():
+    data = request.json
+    query = data.get('query')
+    document_path = data.get('document_path')
+
+    if not query or not document_path:
+        return jsonify({"error": "Query and document_path are required."}), 400
+
+    try:
+        context = get_context_from_query(query, document_path)
+        return jsonify({"context": context})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# Route for generating QA based on a story
+@app.route('/generate_qa', methods=['POST'])
+def generate_qa():
+    data = request.json
+    context = data.get('context')
+
+    if not context:
+        return jsonify({"error": "Context is required."}), 400
+
+    try:
+        qa_output = generate_fun_qa_from_context(context)
+        return jsonify({"qa": qa_output})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/translate', methods=['POST'])
+def translate():
+    data = request.json
+    english_text = data.get('text')
+
+    if not english_text:
+        return jsonify({"error": "Text to translate is required."}), 400
+
+    try:
+        # Call the synchronous translation function
+        nepali_text = translate_to_nepali(english_text)
+        return jsonify({"translated_text": nepali_text})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
