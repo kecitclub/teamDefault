@@ -50,7 +50,7 @@ fun SampleScreen() {
                         .size(224.dp),
                     shape = RoundedCornerShape(bottomStartPercent = 8, bottomEndPercent = 8),
 
-                    border = BorderStroke(width = 1.dp, color = Color(0xFF617AD3))
+                    //border = BorderStroke(width = 1.dp, color = Color(0xFF617AD3))
                 ) {
 
                     Image(
