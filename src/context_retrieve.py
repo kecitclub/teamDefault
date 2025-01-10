@@ -4,18 +4,27 @@ from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core.query_engine import RetrieverQueryEngine
 from llama_index.core.postprocessor import SimilarityPostprocessor
 
-document_path = "D:\teamDefault\documents"
+# Specify the document path
+document_path = "D:\\teamDefault\\documents"
 
-def get_context_from_query(query, document_path = document_path, embed_model="BAAI/bge-small-en-v1.5", chunk_size=256, chunk_overlap=25, top_k=1, similarity_cutoff=0.5):
-    # Configure settings
-    # Load documents
-    embed_model="BAAI/bge-small-en-v1.5"
-    documents = SimpleDirectoryReader(document_path).load_data()
+# Load documents
+documents = SimpleDirectoryReader(document_path).load_data()
 
-    # Create index
-    index = VectorStoreIndex.from_documents(documents)
-    Settings.embed_model = HuggingFaceEmbedding(model_name=embed_model)
-    Settings.llm = None
+# Create the embedding model
+embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
+
+# Configure settings for the embedding model
+Settings.embed_model = embed_model
+Settings.llm = None
+
+# Create the index
+index = VectorStoreIndex.from_documents(documents)
+
+def get_context_from_query(query, chunk_size=256, chunk_overlap=25, top_k=1, similarity_cutoff=0.5):
+    """
+    Retrieve context based on the query.
+    """
+    # Configure chunking settings
     Settings.chunk_size = chunk_size
     Settings.chunk_overlap = chunk_overlap
 
@@ -42,9 +51,9 @@ def get_context_from_query(query, document_path = document_path, embed_model="BA
     return context
 
 
-# query = "What is Dashain?"
-# result_context = get_context_from_query(query, document_path)
-# print(result_context)
+query = "What is Dashain?"
+result_context = get_context_from_query(query, document_path)
+print(result_context)
 
 
 

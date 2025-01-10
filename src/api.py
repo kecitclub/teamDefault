@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from context_retrieve import get_context_from_query
 from question_asnwer import generate_fun_qa_from_context
 from translator import translate_to_nepali
+from tts import devanagari_to_speech
 import asyncio
 
 app = Flask(__name__)
@@ -52,6 +53,22 @@ def translate():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/convert', methods=['POST'])
+def convert_text_to_speech():
+    data = request.get_json()
+
+    if 'text' not in data:
+        return jsonify({"error": "Missing 'text' field"}), 400
+
+    text = data['text']
+    output_file = 'output.mp3'
+
+    result = devanagari_to_speech(text, output_file=output_file)
+
+    if result:
+        return jsonify({"message": f"Speech saved to {output_file}"}), 200
+    else:
+        return jsonify({"error": "Failed to convert text to speech"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) 
