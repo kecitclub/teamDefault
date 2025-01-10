@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -97,18 +98,12 @@ fun CategoryCardItem(items: Category, navigateToStudy:()->Unit) {
             horizontalAlignment = Alignment.Start,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 16.dp, top = 4.dp)
+                .padding(start = 16.dp, top = 12.dp)
         ) {
             Text(
                 text = items.title,
                 fontWeight = FontWeight.Bold,
-                fontSize = 16.sp
-            )
-
-            Text(
-                text = items.noOfQuestions,
-                fontWeight = FontWeight.Light,
-                fontSize = 12.sp
+                fontSize = 16.sp,
             )
         }
     }
