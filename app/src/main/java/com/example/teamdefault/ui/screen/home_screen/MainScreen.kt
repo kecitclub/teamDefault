@@ -34,16 +34,34 @@ fun MainScreen() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
 
     Scaffold(
-        topBar = { TopBar(
-            navBackStackEntry = navBackStackEntry,
-            navigateBack = { navController.popBackStack() }) },
-        floatingActionButton = { FloatingButton() },
+        topBar = {
+            TopBar(
+                navBackStackEntry = navBackStackEntry,
+                navigateBack = { navController.popBackStack() })
+        },
+        floatingActionButton = {
+            if (navBackStackEntry?.destination?.route?.let { route ->
+                    route.startsWith("Language") ||
+                            route.startsWith("Culture") ||
+                            route.startsWith("Folk") ||
+                            route.startsWith("Festival")
+                } == false) {
+                FloatingButton()
+            }
+        },
         floatingActionButtonPosition = FabPosition.Center,
         bottomBar = {
-            BottomBar(
-                navController = navController,
-                navBackStackEntry = navBackStackEntry
-            )
+            if (navBackStackEntry?.destination?.route?.let { route ->
+                    route.startsWith("Language") ||
+                            route.startsWith("Culture") ||
+                            route.startsWith("Folk") ||
+                            route.startsWith("Festival")
+                } == false) {
+                BottomBar(
+                    navController = navController,
+                    navBackStackEntry = navBackStackEntry
+                )
+            }
         },
         containerColor = colorResource(id = R.color.primary_purple)
     ) { innerPadding ->
@@ -55,7 +73,8 @@ fun MainScreen() {
             composable(route = Screen.Home.route) {
                 HomeScreen(
                     navController = navController,
-                    innerPadding = innerPadding)
+                    innerPadding = innerPadding
+                )
             }
 
             composable(route = Screen.Category.route) {
@@ -74,19 +93,19 @@ fun MainScreen() {
                 ProfileScreen(modifier = Modifier.padding(innerPadding))
             }
 
-            composable(route = Screen.Language.route){
-                LanguageScreen(modifier = Modifier.padding(innerPadding))
+            composable(route = Screen.Language.route) {
+                LanguageScreen(modifier = Modifier.padding(innerPadding), onFinish = {navController.navigate(Screen.Home.route)})
             }
 
-            composable(route = Screen.Culture.route){
+            composable(route = Screen.Culture.route) {
                 CultureScreen(modifier = Modifier.padding(innerPadding))
             }
 
-            composable (route = Screen.FolkTales.route){
+            composable(route = Screen.FolkTales.route) {
                 FolkTalesScreen(modifier = Modifier.padding(innerPadding))
             }
 
-            composable(route = Screen.Festival.route){
+            composable(route = Screen.Festival.route) {
                 FestivalScreen(modifier = Modifier.padding(innerPadding))
             }
         }
