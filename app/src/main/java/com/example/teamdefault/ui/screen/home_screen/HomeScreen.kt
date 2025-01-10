@@ -120,6 +120,7 @@ fun WordBoard(modifier: Modifier = Modifier) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 20.dp)
+            .height(160.dp)
             .graphicsLayer {
                 rotationX = rotation
                 cameraDistance = 12f * density
@@ -135,7 +136,7 @@ fun WordBoard(modifier: Modifier = Modifier) {
                 }
         ) {
             Text(
-                text = if (rotation <= 90f) "Word of the Day: \nCat" else "बिरालो",
+                text = if (rotation <= 90f) "Word of the Day: \nबिरालो" else "Cat",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Medium,
                 color = Color.White,
@@ -151,7 +152,7 @@ fun WordBoard(modifier: Modifier = Modifier) {
                 )
             ) {
                 Text(
-                    text = if (rotation <= 90f) "Show Nepali" else "Show English",
+                    text = if (rotation <= 90f) "Show English" else "Show Nepali",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
