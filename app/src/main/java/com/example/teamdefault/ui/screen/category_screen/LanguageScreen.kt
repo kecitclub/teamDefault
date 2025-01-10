@@ -32,26 +32,14 @@ import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.ui.res.colorResource
+import com.example.teamdefault.data.cards
 import java.util.*
-
-data class Card(
-    val englishWord: String,
-    val imageResId: Int,
-    val nepaliWord: String,
-    )
 
 @Composable
 fun LanguageScreen(
     modifier: Modifier = Modifier,
     onFinish: () -> Unit // Callback when Finish is pressed
 ) {
-    val cards = listOf(
-        Card("Cat", R.drawable.cat1, "बिरालो"),
-        Card("Dog", R.drawable.dog2, "कुकुर"),
-        Card("Cow", R.drawable.cow1, "गाई"),
-        Card("Parrot", R.drawable.parrot1, "सुगा"),
-        Card("Pigeon", R.drawable.pigeon1, "परेवा")
-    )
 
     var currentIndex by remember { mutableStateOf(0) }
     var isCardExpanded by remember { mutableStateOf(false) } // Track expansion state globally
@@ -115,15 +103,16 @@ fun ExpandableLanguageCard(
     isExpanded: Boolean,
     onExpansionChange: (Boolean) -> Unit // Callback to track expansion state
 ) {
-    //var expanded by remember { mutableStateOf(false) }
     val context = LocalContext.current
     var tts: TextToSpeech? by remember { mutableStateOf(null) }
+    var ttsInitialized by remember { mutableStateOf(false) }
 
     // Initialize TTS
     DisposableEffect(Unit) {
         tts = TextToSpeech(context) { status ->
             if (status == TextToSpeech.SUCCESS) {
-                tts?.language = Locale("ne") // Set Nepali language
+                val result = tts?.setLanguage(Locale("ne"))
+                ttsInitialized = result == TextToSpeech.LANG_COUNTRY_AVAILABLE || result == TextToSpeech.LANG_AVAILABLE
             }
         }
         onDispose {
@@ -175,8 +164,7 @@ fun ExpandableLanguageCard(
                 onClick = {
                     val newState = !isExpanded
                     onExpansionChange(newState)
-                    if (newState) {
-                        // Speak Nepali word when showing translation
+                    if (newState && ttsInitialized) {
                         tts?.speak(nepaliWord, TextToSpeech.QUEUE_FLUSH, null, null)
                     }
                 },
@@ -203,7 +191,9 @@ fun ExpandableLanguageCard(
 
                     OutlinedButton(
                         onClick = {
-                            tts?.speak(nepaliWord, TextToSpeech.QUEUE_FLUSH, null, null)
+                            if (ttsInitialized) {
+                                tts?.speak(nepaliWord, TextToSpeech.QUEUE_FLUSH, null, null)
+                            }
                         },
                         modifier = modifier
                             .fillMaxWidth()
@@ -225,6 +215,7 @@ fun ExpandableLanguageCard(
         }
     }
 }
+
 
 @Composable
 fun NextButtonComponent(
