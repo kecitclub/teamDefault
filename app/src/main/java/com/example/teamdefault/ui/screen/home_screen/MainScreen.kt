@@ -28,7 +28,9 @@ fun MainScreen() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
 
     Scaffold(
-        topBar = { TopBar(navBackStackEntry = navBackStackEntry) },
+        topBar = { TopBar(
+            navBackStackEntry = navBackStackEntry,
+            navigateBack = { navController.popBackStack() }) },
         floatingActionButton = { FloatingButton() },
         floatingActionButtonPosition = FabPosition.Center,
         bottomBar = {
@@ -39,7 +41,10 @@ fun MainScreen() {
         },
         containerColor = colorResource(id = R.color.primary_purple)
     ) { innerPadding ->
-        NavHost(navController = navController, startDestination = Screen.Home.route) {
+        NavHost(
+            navController = navController,
+            startDestination = Screen.Home.route
+        ) {
 
             composable(route = Screen.Home.route) {
                 HomeScreen(innerPadding = innerPadding)
@@ -53,11 +58,11 @@ fun MainScreen() {
             }
 
             composable(route = Screen.Calender.route) {
-                NepaliCalenderScreen()
+                NepaliCalenderScreen(modifier = Modifier.padding(innerPadding))
             }
 
             composable(route = Screen.Profile.route) {
-                ProfileScreen()
+                ProfileScreen(modifier = Modifier.padding(innerPadding))
             }
         }
     }

@@ -39,7 +39,7 @@ fun CategoryScreen(
 ) {
 
     Surface(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(top = 10.dp),
         shape = RoundedCornerShape(topStartPercent = 8, topEndPercent = 8),

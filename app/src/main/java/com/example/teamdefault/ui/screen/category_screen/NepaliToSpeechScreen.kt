@@ -1,4 +1,4 @@
-package com.example.teamdefault.ui.screen.language_screen
+package com.example.teamdefault.ui.screen.category_screen
 
 import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.background

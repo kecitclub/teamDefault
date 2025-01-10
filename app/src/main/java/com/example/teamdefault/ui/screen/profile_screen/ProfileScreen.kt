@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 fun ProfileScreen(modifier: Modifier = Modifier) {
 
     Surface(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize(),
         shape = RoundedCornerShape(topStartPercent = 8, topEndPercent = 8),
         color = Color(0xFFEAF3FF)
