@@ -46,12 +46,12 @@ import com.example.teamdefault.R
 import com.example.teamdefault.data.Category
 import com.example.teamdefault.data.itemCategory
 import com.example.teamdefault.ui.component.SampleScreen
-import com.example.teamdefault.ui.component.TopProfileBar
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.graphicsLayer
 import com.example.teamdefault.ui.component.PopularCard
+import com.example.teamdefault.ui.component.TopProfileBar
 import com.example.teamdefault.ui.screen.category_screen.CategoryScreen
 
 @Composable

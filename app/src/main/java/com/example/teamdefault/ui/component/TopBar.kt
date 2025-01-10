@@ -35,7 +35,7 @@ fun TopBar(navBackStackEntry: NavBackStackEntry?, modifier: Modifier = Modifier)
     val title = navBackStackEntry?.destination?.route ?: Screen.Home.route
 
     when (title) {
-        Screen.Home.route -> TopProfileBar(title)
+       // Screen.Home.route -> TopProfileBar(title)
     }
 }
 
