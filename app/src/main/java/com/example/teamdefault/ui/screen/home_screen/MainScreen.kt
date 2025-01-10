@@ -23,6 +23,7 @@ import com.example.teamdefault.ui.screen.category_screen.CategoryScreen
 import com.example.teamdefault.ui.screen.category_screen.CultureScreen
 import com.example.teamdefault.ui.screen.category_screen.FestivalScreen
 import com.example.teamdefault.ui.screen.category_screen.FolkTalesScreen
+import com.example.teamdefault.ui.screen.category_screen.LanguageScreen
 import com.example.teamdefault.ui.screen.category_screen.NepaliToSpeechScreen
 import com.example.teamdefault.ui.screen.profile_screen.ProfileScreen
 
@@ -74,7 +75,7 @@ fun MainScreen() {
             }
 
             composable(route = Screen.Language.route){
-                NepaliToSpeechScreen(modifier = Modifier.padding(innerPadding))
+                LanguageScreen(modifier = Modifier.padding(innerPadding))
             }
 
             composable(route = Screen.Culture.route){
