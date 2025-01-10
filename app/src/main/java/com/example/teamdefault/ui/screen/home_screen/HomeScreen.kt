@@ -48,6 +48,10 @@ import com.example.teamdefault.data.itemCategory
 import com.example.teamdefault.ui.component.SampleScreen
 import com.example.teamdefault.ui.component.TopProfileBar
 
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.runtime.*
+import androidx.compose.ui.graphics.graphicsLayer
+
 @Composable
 fun HomeScreen(innerPadding: PaddingValues = PaddingValues(20.dp)) {
     Column(
@@ -57,6 +61,8 @@ fun HomeScreen(innerPadding: PaddingValues = PaddingValues(20.dp)) {
         Column() {
 
             PlayBoard()
+            Spacer(modifier = Modifier.height(16.dp))
+            WordBoard()
         }
         PopularList()
     }
@@ -86,6 +92,61 @@ fun PlayBoard(modifier: Modifier = Modifier) {
                 contentDescription = null,
                 //modifier = Modifier.height(200.dp)
             )
+        }
+    }
+}
+
+@Composable
+fun WordBoard(modifier: Modifier = Modifier) {
+    var isFlipped by remember { mutableStateOf(false) }
+
+    val rotation by animateFloatAsState(
+        targetValue = if (isFlipped) 180f else 0f,
+        label = "card_flip"
+    )
+
+    Surface(
+        color = colorResource(id = R.color.primary_purple),
+        shape = RoundedCornerShape(12.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp)
+            .graphicsLayer {
+                rotationX = rotation
+                cameraDistance = 12f * density
+            }
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .padding(20.dp)
+                .fillMaxWidth()
+                .graphicsLayer {
+                    rotationX = if (rotation > 90f) 180f else 0f
+                }
+        ) {
+            Text(
+                text = if (rotation <= 90f) "Word of the Day: \nCat" else "बिरालो",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Medium,
+                color = Color.White,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth(),
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Button(
+                onClick = { isFlipped = !isFlipped },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.White,
+                    contentColor = colorResource(id = R.color.text_purple)
+                )
+            ) {
+                Text(
+                    text = if (rotation <= 90f) "Show Nepali" else "Show English",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
         }
     }
 }
