@@ -16,12 +16,12 @@ import dev.shivathapaa.nepalidatepickerkmp.NepaliDatePicker
 import dev.shivathapaa.nepalidatepickerkmp.rememberNepaliDatePickerState
 
 @Composable
-fun NepaliCalenderScreen() {
+fun NepaliCalenderScreen(modifier: Modifier = Modifier) {
 
     val defaultNepaliDatePickerState = rememberNepaliDatePickerState()
 
     Surface(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(top = 10.dp),
         shape = RoundedCornerShape(topStartPercent = 8, topEndPercent = 8),

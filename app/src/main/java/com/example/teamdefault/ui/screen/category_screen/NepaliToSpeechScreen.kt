@@ -20,7 +20,7 @@ import com.example.teamdefault.ui.component.QuestionComponent
 import java.util.Locale
 
 @Composable
-fun NepaliToSpeechScreen() {
+fun NepaliToSpeechScreen(modifier: Modifier  = Modifier) {
     val context = LocalContext.current
     var tts: TextToSpeech? by remember { mutableStateOf(null) }
     val text = "नमस्ते, तपाईंलाई कस्तो छ?" // Predefined Nepali text

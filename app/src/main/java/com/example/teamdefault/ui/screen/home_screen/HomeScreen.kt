@@ -50,12 +50,17 @@ import com.example.teamdefault.ui.component.SampleScreen
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.teamdefault.ui.component.PopularCard
 import com.example.teamdefault.ui.component.TopProfileBar
 import com.example.teamdefault.ui.screen.category_screen.CategoryScreen
 
 @Composable
-fun HomeScreen(innerPadding: PaddingValues = PaddingValues(20.dp)) {
+fun HomeScreen(
+    navController: NavController,
+    innerPadding: PaddingValues = PaddingValues(20.dp)
+) {
     Column(
         Modifier
             .padding(innerPadding)
@@ -68,7 +73,7 @@ fun HomeScreen(innerPadding: PaddingValues = PaddingValues(20.dp)) {
             Spacer(modifier = Modifier.height(16.dp))
 
         }
-        PopularList()
+        PopularList(navController = navController)
     }
 }
 
@@ -158,7 +163,7 @@ fun WordBoard(modifier: Modifier = Modifier) {
 
 
 @Composable
-fun PopularList(modifier: Modifier = Modifier) {
+fun PopularList(navController: NavController,modifier: Modifier = Modifier) {
     Surface(
         color =  Color(0xFFEAF3FF)
         ,
@@ -191,7 +196,7 @@ fun PopularList(modifier: Modifier = Modifier) {
 
             //SampleScreen()
             //CategoryScreen (navigateToStudy = {})
-            PopularCard (navigateToStudy = {})
+            PopularCard (navController = navController,navigateToStudy = {})
         }
     }
 }
@@ -204,5 +209,5 @@ fun PopularList(modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 private fun HomeScreenPreview() {
-    HomeScreen()
+    HomeScreen(navController = rememberNavController())
 }

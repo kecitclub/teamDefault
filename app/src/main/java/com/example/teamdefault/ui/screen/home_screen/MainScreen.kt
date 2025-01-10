@@ -13,12 +13,17 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.teamdefault.R
+import com.example.teamdefault.data.itemCategory
 import com.example.teamdefault.navigation.Screen
 import com.example.teamdefault.ui.component.BottomBar
 import com.example.teamdefault.ui.component.FloatingButton
 import com.example.teamdefault.ui.component.TopBar
 import com.example.teamdefault.ui.screen.calender_screen.NepaliCalenderScreen
 import com.example.teamdefault.ui.screen.category_screen.CategoryScreen
+import com.example.teamdefault.ui.screen.category_screen.CultureScreen
+import com.example.teamdefault.ui.screen.category_screen.FestivalScreen
+import com.example.teamdefault.ui.screen.category_screen.FolkTalesScreen
+import com.example.teamdefault.ui.screen.category_screen.NepaliToSpeechScreen
 import com.example.teamdefault.ui.screen.profile_screen.ProfileScreen
 
 @Composable
@@ -47,11 +52,14 @@ fun MainScreen() {
         ) {
 
             composable(route = Screen.Home.route) {
-                HomeScreen(innerPadding = innerPadding)
+                HomeScreen(
+                    navController = navController,
+                    innerPadding = innerPadding)
             }
 
             composable(route = Screen.Category.route) {
                 CategoryScreen(
+                    navController = navController,
                     navigateToStudy = {},
                     modifier = Modifier.padding(innerPadding),
                 )
@@ -63,6 +71,22 @@ fun MainScreen() {
 
             composable(route = Screen.Profile.route) {
                 ProfileScreen(modifier = Modifier.padding(innerPadding))
+            }
+
+            composable(route = Screen.Language.route){
+                NepaliToSpeechScreen(modifier = Modifier.padding(innerPadding))
+            }
+
+            composable(route = Screen.Culture.route){
+                CultureScreen(modifier = Modifier.padding(innerPadding))
+            }
+
+            composable (route = Screen.FolkTales.route){
+                FolkTalesScreen(modifier = Modifier.padding(innerPadding))
+            }
+
+            composable(route = Screen.Festival.route){
+                FestivalScreen(modifier = Modifier.padding(innerPadding))
             }
         }
     }

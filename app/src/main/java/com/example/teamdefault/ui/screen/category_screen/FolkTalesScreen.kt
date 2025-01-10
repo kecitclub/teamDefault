@@ -22,10 +22,10 @@ import androidx.compose.ui.unit.sp
 import com.example.teamdefault.R
 
 @Composable
-fun FolkTalesScreen() {
+fun FolkTalesScreen(modifier: Modifier = Modifier) {
 
     Surface(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(top = 10.dp),
         shape = RoundedCornerShape(topStartPercent = 8, topEndPercent = 8),

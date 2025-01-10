@@ -26,7 +26,9 @@ import com.example.teamdefault.R
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Surface
+import androidx.navigation.NavController
 import com.example.teamdefault.data.itemCategory
+import com.example.teamdefault.navigation.Screen
 import com.example.teamdefault.ui.screen.category_screen.CategoryCardItem
 
 @Composable
@@ -101,6 +103,7 @@ fun SampleScreen() {
 
 @Composable
 fun PopularCard(
+    navController: NavController,
     navigateToStudy: (String) -> Unit
 ) {
     // Take only the first two items from itemCategory
@@ -123,7 +126,14 @@ fun PopularCard(
             items(twoCategories) { category ->
                 CategoryCardItem(
                     items = category,
-                    navigateToStudy = { navigateToStudy(category.title) }
+                    navigateToStudy = {
+                        when (category.title) {
+                            "Language" -> navController.navigate(Screen.Language.route)
+                            "Culture" -> navController.navigate(Screen.Culture.route)
+                            "Folk Tales" -> navController.navigate(Screen.FolkTales.route)
+                            "Festival" -> navController.navigate(Screen.Festival.route)
+                        }
+                    }
                 )
             }
         }

@@ -30,10 +30,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.teamdefault.navigation.Screen
 
 
 @Composable
 fun CategoryScreen(
+    navController: NavController,
     navigateToStudy:(String)->Unit,
     modifier: Modifier = Modifier
 ) {
@@ -53,7 +57,17 @@ fun CategoryScreen(
                 .fillMaxWidth(), columns = GridCells.Fixed(2)
         ) {
             items(itemCategory) { category ->
-                CategoryCardItem(items = category, navigateToStudy = { navigateToStudy(category.title) })
+                CategoryCardItem(
+                    items = category,
+                    navigateToStudy = {
+                        when (category.title) {
+                            "Language" -> navController.navigate(Screen.Language.route)
+                            "Culture" -> navController.navigate(Screen.Culture.route)
+                            "Folk Tales" -> navController.navigate(Screen.FolkTales.route)
+                            "Festival" -> navController.navigate(Screen.Festival.route)
+                        }
+                    }
+                )
             }
         }
     }
@@ -113,5 +127,5 @@ fun CategoryCardItem(items: Category, navigateToStudy:()->Unit) {
 @Preview
 @Composable
 private fun CategoryScreenPreview() {
-    CategoryScreen({})
+    CategoryScreen(navController = rememberNavController(), navigateToStudy = {})
 }
