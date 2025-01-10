@@ -1,7 +1,7 @@
 import os
 from mistralai import Mistral
 
-api_key = "dj5C7IMYOA3eFOskmkuuM9xdy7mbD8UO"
+api_key = "your-api-key"
 
 def generate_fun_qa_from_context(context, api_key=api_key, model="open-mistral-7b"):
     """

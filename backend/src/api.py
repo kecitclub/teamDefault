@@ -63,12 +63,13 @@ def convert_text_to_speech():
     text = data['text']
     output_file = 'output.mp3'
 
-    result = devanagari_to_speech(text, output_file=output_file)
+    result = devanagari_to_speech(text, output_file=output_file,speed_factor=1.2, pitch_shift=6)
 
     if result:
         return jsonify({"message": f"Speech saved to {output_file}"}), 200
     else:
         return jsonify({"error": "Failed to convert text to speech"}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True) 
