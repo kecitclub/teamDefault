@@ -23,6 +23,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.teamdefault.R
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Surface
+import com.example.teamdefault.data.itemCategory
+import com.example.teamdefault.ui.screen.category_screen.CategoryCardItem
 
 @Composable
 fun SampleScreen() {
@@ -46,8 +51,8 @@ fun SampleScreen() {
                         contentColor = Color(0x338E8FF3)
                     ),
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .size(224.dp),
+                        .fillMaxWidth(),
+                        //.size(224.dp),
                     shape = RoundedCornerShape(bottomStartPercent = 8, bottomEndPercent = 8),
 
                     //border = BorderStroke(width = 1.dp, color = Color(0xFF617AD3))
@@ -56,7 +61,7 @@ fun SampleScreen() {
                     Image(
                         painter = painterResource(id = R.drawable.language),
                         contentDescription = null,
-                        contentScale = ContentScale.FillHeight
+                        contentScale = ContentScale.FillWidth
                     )
                 }
             }
@@ -69,8 +74,8 @@ fun SampleScreen() {
                         contentColor = Color(0x338E8FF3)
                     ),
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .size(224.dp),
+                        .fillMaxWidth(),
+                        //.size(224.dp),
                     shape = RoundedCornerShape(bottomStartPercent = 8, bottomEndPercent = 8),
 
                     border = BorderStroke(width = 1.dp, color = Color(0xFF617AD3))
@@ -79,7 +84,7 @@ fun SampleScreen() {
                     Image(
                         painter = painterResource(id = R.drawable.story),
                         contentDescription = null,
-                        contentScale = ContentScale.FillHeight
+                        contentScale = ContentScale.FillWidth
                     )
 
                 }
@@ -89,6 +94,40 @@ fun SampleScreen() {
         
     }
 
+}
+
+
+
+
+@Composable
+fun PopularCard(
+    navigateToStudy: (String) -> Unit
+) {
+    // Take only the first two items from itemCategory
+    val twoCategories = itemCategory.take(2)
+
+    Surface(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 10.dp),
+        shape = RoundedCornerShape(topStartPercent = 8, topEndPercent = 8),
+        color = Color(0xFFEAF3FF)
+    ) {
+        LazyVerticalGrid(
+            modifier = Modifier
+                .padding(8.dp)
+                .padding(top = 10.dp)
+                .fillMaxWidth(),
+            columns = GridCells.Fixed(2)
+        ) {
+            items(twoCategories) { category ->
+                CategoryCardItem(
+                    items = category,
+                    navigateToStudy = { navigateToStudy(category.title) }
+                )
+            }
+        }
+    }
 }
 
 @Preview(showBackground = true)

@@ -51,6 +51,8 @@ import com.example.teamdefault.ui.component.TopProfileBar
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.graphicsLayer
+import com.example.teamdefault.ui.component.PopularCard
+import com.example.teamdefault.ui.screen.category_screen.CategoryScreen
 
 @Composable
 fun HomeScreen(innerPadding: PaddingValues = PaddingValues(20.dp)) {
@@ -63,6 +65,8 @@ fun HomeScreen(innerPadding: PaddingValues = PaddingValues(20.dp)) {
             PlayBoard()
             Spacer(modifier = Modifier.height(16.dp))
             WordBoard()
+            Spacer(modifier = Modifier.height(16.dp))
+
         }
         PopularList()
     }
@@ -106,7 +110,7 @@ fun WordBoard(modifier: Modifier = Modifier) {
     )
 
     Surface(
-        color = colorResource(id = R.color.primary_purple),
+        color = Color(0x4DF1F4FF),
         shape = RoundedCornerShape(12.dp),
         modifier = Modifier
             .fillMaxWidth()
@@ -156,14 +160,15 @@ fun WordBoard(modifier: Modifier = Modifier) {
 @Composable
 fun PopularList(modifier: Modifier = Modifier) {
     Surface(
-        color = colorResource(id = R.color.white_background),
+        color =  Color(0xFFEAF3FF)
+        ,
         shape = RoundedCornerShape(topStartPercent = 16, topEndPercent = 16),
         modifier = Modifier.fillMaxSize()
     ) {
         Column(
             Modifier
                 .padding(20.dp)
-                .padding(top = 16.dp)
+                .padding(top = 4.dp)
         ) {
             Row(
                 Modifier.fillMaxWidth(),
@@ -182,9 +187,11 @@ fun PopularList(modifier: Modifier = Modifier) {
                     color = colorResource(id = R.color.text_purple)
                 )
             }
-            Spacer(modifier = Modifier.height(12.dp))
+            //Spacer(modifier = Modifier.height(12.dp))
 
-            SampleScreen()
+            //SampleScreen()
+            //CategoryScreen (navigateToStudy = {})
+            PopularCard (navigateToStudy = {})
         }
     }
 }
