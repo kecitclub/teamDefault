@@ -24,8 +24,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavBackStackEntry
 import com.example.teamdefault.R
+import com.example.teamdefault.navigation.Screen
 import com.example.teamdefault.utils.DateConverter
+
+@Composable
+fun TopBar(navBackStackEntry: NavBackStackEntry?, modifier: Modifier = Modifier) {
+
+    val title = navBackStackEntry?.destination?.route ?: Screen.Home.route
+
+    when (title) {
+        Screen.Home.route -> TopProfileBar(title)
+    }
+}
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

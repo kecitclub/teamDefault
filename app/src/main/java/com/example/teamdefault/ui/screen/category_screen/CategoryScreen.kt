@@ -34,7 +34,8 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun CategoryScreen(
-    navigateToStudy:(String)->Unit
+    navigateToStudy:(String)->Unit,
+    modifier: Modifier = Modifier
 ) {
 
     Surface(

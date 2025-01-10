@@ -58,7 +58,7 @@ import com.example.teamdefault.ui.screen.category_screen.CategoryScreen
 fun HomeScreen(innerPadding: PaddingValues = PaddingValues(20.dp)) {
     Column(
         Modifier
-            //.padding(innerPadding)
+            .padding(innerPadding)
     ) {
         Column() {
 

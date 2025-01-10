@@ -10,15 +10,25 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavController
 import com.example.teamdefault.data.itemNavigation
+import com.example.teamdefault.navigation.Screen
 
 @Composable
-fun BottomBar(modifier: Modifier = Modifier) {
+fun BottomBar(
+    navController: NavController,
+    navBackStackEntry: NavBackStackEntry?,
+) {
     NavigationBar(containerColor = Color.White) {
         itemNavigation.forEach { item ->
+
+            val isSelected =
+                item.title == (navBackStackEntry?.destination?.route ?: Screen.Home.route)
+
             NavigationBarItem(
-                selected = false,
-                onClick = { /*TODO*/ },
+                selected = isSelected,
+                onClick = { navController.navigate(item.title)},
                 icon = {
                     if (item.title!="WhiteSpace"){
                         Icon(
@@ -35,5 +45,5 @@ fun BottomBar(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun BottomBarPreview() {
-    BottomBar()
+    //BottomBar()
 }
