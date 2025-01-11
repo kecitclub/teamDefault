@@ -12,6 +12,7 @@ val titleTopBar = mapOf(
     Screen.Language.route to "Language",
     Screen.Culture.route to "Culture",
     Screen.FolkTales.route to "Folk Tales",
-    Screen.Festival.route to "Festival"
+    Screen.Festival.route to "Festival",
+    Screen.LLMScreen.route to "LLM Screen"
 
 )

@@ -20,7 +20,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:label="TeamDefault"
             android:theme="@style/Theme.TeamDefault">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

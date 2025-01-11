@@ -21,4 +21,6 @@ sealed class Screen(val route: String) {
     data object Festival : Screen("Festival")
     data object Language : Screen("Language")
     data object FolkTales: Screen("FolkTales")
+
+    data object LLMScreen: Screen("LLMScreen")
 }

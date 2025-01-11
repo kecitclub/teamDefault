@@ -79,6 +79,8 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
 
+    implementation("androidx.core:core-splashscreen:1.0.0")
+
 
 
 

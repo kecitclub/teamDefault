@@ -12,12 +12,14 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.teamdefault.R
+import com.example.teamdefault.navigation.Screen
 
 @Composable
-fun FloatingButton(modifier: Modifier = Modifier) {
+fun FloatingButton(navController: NavController,modifier: Modifier = Modifier) {
     FloatingActionButton(
-        onClick = { /*TODO*/ },
+        onClick = { navController.navigate(Screen.LLMScreen.route) },
         shape = CircleShape,
         containerColor = colorResource(id = R.color.primary_purple),
         contentColor = colorResource(id = R.color.white),
@@ -40,5 +42,5 @@ fun FloatingButton(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun FloatingButtonPreview() {
-    FloatingButton()
+    //FloatingButton()
 }
