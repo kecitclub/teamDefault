@@ -1,5 +1,6 @@
 package com.example.teamdefault.ui.screen.home_screen
 
+import ProfileScreen
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Scaffold
@@ -25,7 +26,6 @@ import com.example.teamdefault.ui.screen.category_screen.FestivalScreen
 import com.example.teamdefault.ui.screen.category_screen.FolkTalesScreen
 import com.example.teamdefault.ui.screen.category_screen.LanguageScreen
 import com.example.teamdefault.ui.screen.category_screen.NepaliToSpeechScreen
-import com.example.teamdefault.ui.screen.profile_screen.ProfileScreen
 
 @Composable
 fun MainScreen() {

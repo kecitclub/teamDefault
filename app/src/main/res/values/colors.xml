@@ -17,5 +17,16 @@
     <color name="primary_blue">#FFE5EEFF</color>
     <color name="secondary_blue">#FFC6D8FC</color>
     <color name="white_background">#FFFEFCFF</color>
+    <color name="tertiary_blue">#FFEFEEFC</color>
+
+
+    <color name="skin_background">#FFFFB9A7</color>
+    <color name="gray_background">#FFEFEEFC</color>
+    <color name="red_background">#FFFF4F4F</color>
+    <color name="aqua_background">#FF2C8CB3</color>
+    <color name="brown_background">#FF5E342E</color>
+    <color name="orange_background">#FFFF8C51</color>
+    <color name="yellow_background">#FFFFC85C</color>
+    <color name="green_background">#FF9BCE7A</color>
 
 </resources>

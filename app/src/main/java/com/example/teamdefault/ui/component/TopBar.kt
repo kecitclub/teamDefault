@@ -75,7 +75,7 @@ fun TopProfileBar(title: String) {
                             color = Color(0xFFFFD6DD)
                         )
                         Text(
-                            text = "Team Default",
+                            text = "Welcome Hari",
                             fontSize = 28.sp,
                             fontWeight = FontWeight.Medium,
                             color = Color.White
