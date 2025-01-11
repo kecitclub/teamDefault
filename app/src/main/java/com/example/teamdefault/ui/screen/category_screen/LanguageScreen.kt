@@ -60,7 +60,11 @@ fun LanguageScreen(
             // Show current card
             ExpandableLanguageCard(
                 modifier = Modifier.padding(16.dp),
-                englishWord = cards[currentIndex].englishWord,
+                englishWord =
+
+
+
+                cards[currentIndex].englishWord,
                 imageResId = cards[currentIndex].imageResId,
                 nepaliWord = cards[currentIndex].nepaliWord,
                 isExpanded = isCardExpanded,

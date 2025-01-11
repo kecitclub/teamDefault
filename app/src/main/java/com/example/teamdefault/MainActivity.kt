@@ -5,8 +5,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.teamdefault.navigation.NavigationScreen
+import com.example.teamdefault.ui.component.ChatWithAI
 import com.example.teamdefault.ui.screen.calender_screen.NepaliCalenderScreen
 import com.example.teamdefault.ui.screen.category_screen.ExpandableLanguageCard
+import com.example.teamdefault.ui.screen.category_screen.NepaliToSpeechScreen
 
 import com.example.teamdefault.ui.theme.TeamDefaultTheme
 
@@ -20,7 +22,10 @@ class MainActivity : ComponentActivity() {
                    // TextToSpeechScreen()
                    // NepaliCalenderScreen()
                     //NepaliToSpeechScreen()
-                NavigationScreen()
+                //NavigationScreen()
+                //ChatWithAI()
+              // FolkTalesScreen_()
+                NepaliToSpeechScreen()
             }
         }
     }
